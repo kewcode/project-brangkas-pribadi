@@ -1,32 +1,35 @@
 <template>
   <div class="w-full pt-20 bg-theme_primary_light flex flex-wrap p-4 lg:px-40">
   
-    <div class="w-full lg:w-1/2 p-4 shadow-lg rounded-xl">
-      <h1 class="w-full text-lg font-bold my-2">
+    <div class="w-full lg:w-1/2 p-4 shadow-lg rounded-xl mt-3">
+      <h1 class="w-full text-lg font-bold" @click="formTambah = !formTambah">
         Tambah Data Pribadi
       </h1>
-       <div>
-          <label class="flex w-full">Title</label>
-          <input type="text" v-model="d.title" class="my-2 rounded-lg bg-theme_primary_dark p-2 px-3 w-full">
-      </div>
-      <div>
-          <label>Data </label>
-         <textarea v-model="d.data" class="my-2 rounded-lg bg-theme_primary_dark p-2 px-3 w-full"></textarea>
-      </div>
-       <div>
-          <label class="flex w-full">Key
-            <button class="ml-auto ">default (password kamu)</button>
-             </label>
-          <input type="text" v-model="d.key" class="my-2 rounded-lg bg-theme_primary_dark p-2 px-3 w-full">
-      </div>
+      <div :class="(formTambah) ? 'block' : 'hidden lg:block'">
+        <div>
+            <label class="flex w-full">Title</label>
+            <input type="text" v-model="d.title" class="my-2 rounded-lg bg-theme_primary_dark p-2 px-3 w-full">
+        </div>
+        <div>
+            <label>Data </label>
+          <textarea v-model="d.data" class="my-2 rounded-lg bg-theme_primary_dark p-2 px-3 w-full"></textarea>
+        </div>
+        <div>
+            <label class="flex w-full">Key
+              <button class="ml-auto ">default (password user)</button>
+              </label>
+            <input type="text" v-model="d.key" class="my-2 rounded-lg bg-theme_primary_dark p-2 px-3 w-full">
+        </div>
 
-      <div>
-          <button @click="tambah"  class="rounded-lg bg-primary p-2 px-3 w-full mt-3 text-white">Simpan</button>
+        <div>
+            <button @click="tambah"  class="rounded-lg bg-primary p-2 px-3 w-full mt-3 text-white">Simpan</button>
+        </div>
       </div>
+      
 
     </div>
 
-  <ul class="w-full lg:w-1/2 p-4 shadow-lg rounded-xl overflow-scroll" style="max-height:50vh">
+  <ul class="w-full lg:w-1/2 p-4 shadow-lg rounded-xl overflow-scroll mt-3" style="max-height:60vh">
     <h1 class="w-full text-lg font-bold">
       Data Pribadi Saya
     </h1>
@@ -39,7 +42,7 @@
       <button class="rounded-xl w-1/2 bg-danger p-1 px-5 text-sm text-white" @click="hapus(index)">hapus</button>
     </li>
   </ul>
-  <div class="w-full  p-4 text-center shadow-lg rounded-xl absolute bottom-0 right-0 left-0 border" v-if="show">
+  <div class="w-full bg-theme_primary p-4 text-center shadow-lg rounded-xl absolute bottom-0 right-0 left-0 border" v-if="show">
     <h1 class="w-full text-lg font-bold">
      Detail
     </h1>
@@ -50,7 +53,7 @@
 
 
 
-<div v-if="modalKey" class="font-bold  text-center w-full h-screen fixed top-0 right-0 p-3 rounded-lg flex justify-center items-center flex-wrap" style="overflow:scroll">
+<div v-if="modalKey" class="font-bold bg-theme_primary text-center w-full h-screen fixed top-0 right-0 p-3 rounded-lg flex justify-center items-center flex-wrap" style="overflow:scroll">
     
     <div @click="modalKey = false" class=" opacity-75 w-full h-screen bg-theme_primary_light absolute top-0 right-0  z-10"></div>
     
@@ -82,6 +85,7 @@ export default {
   layout: 'app',
   data(){
     return {
+      formTambah: false,
       d:{
         title: '',
         data : '',
