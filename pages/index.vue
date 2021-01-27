@@ -69,7 +69,7 @@
         </div>
 
         <div>
-            <button @click="lihat('with-key');modalKey = false"  class="rounded-lg bg-primary p-2 px-3 w-full mt-3 text-white">Lihat</button>
+            <button @click="modalKey = false;lihat('with-key')"  class="rounded-lg bg-primary p-2 px-3 w-full mt-3 text-white">Lihat</button>
         </div>
 
     </div>
@@ -109,16 +109,19 @@ export default {
         if(!this.d.key){
           this.d.key = JSON.parse(localStorage.getItem('_user')).password
         }
-        const encryptedText = this.CryptoJS.AES.encrypt(this.d.data, this.d.key).toString()
+        let str = this.d.data
+        const encryptedText = this.CryptoJS.AES.encrypt(JSON.stringify(str), this.d.key).toString()
         this.dataEncrypt.push({
           encrypt: encryptedText,
           title: this.d.title
         })
         localStorage.setItem('_dataEncrypt',JSON.stringify(this.dataEncrypt))
         this.d ={
+          title: '',
           data : '',
           key: ''
         }
+        this.formTambah = false
       }
     },
     lihat(withKey){
@@ -128,7 +131,7 @@ export default {
       }else{
        key = JSON.parse(localStorage.getItem('_user')).password
       }
-       const decryptedText = this.CryptoJS.AES.decrypt(this.showEncrypt,key).toString(this.CryptoJS.enc.Utf8)
+       const decryptedText = this.CryptoJS.AES.decrypt(this.showEncrypt.toString(),key).toString(this.CryptoJS.enc.Utf8)
        if(!decryptedText){
          this.modalKey = true
        }
