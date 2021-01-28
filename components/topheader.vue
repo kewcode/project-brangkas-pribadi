@@ -7,7 +7,7 @@
 
                     <nuxt-link to="/home" class="flex text-primary text-md items-start" >
                         <span class=" font-bold text-xl"> 
-                            Berangkas Pribadi
+                            Brangkas Pribadi
                         </span> 
                     </nuxt-link>
 

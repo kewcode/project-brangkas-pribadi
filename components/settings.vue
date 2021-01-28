@@ -10,12 +10,12 @@
         </h1>
         
         <div>
-            <label>Email </label>
-            <input type="text" v-model="d.email" class="rounded-lg bg-theme_primary_dark p-2 px-3 w-full">
+            <label>Nama </label>
+            <input type="text" v-model="d.nama" class="rounded-lg bg-theme_primary_dark p-2 px-3 w-full">
 
         </div>
         <div>
-            <label>Password </label>
+            <label>Password  (Default Key)</label>
             <input type="text" v-model="d.password" class="rounded-lg bg-theme_primary_dark p-2 px-3 w-full">
         </div>
 
@@ -32,7 +32,7 @@ export default {
     data(){
        return{
            d: (JSON.parse(localStorage.getItem('_user'))) || {
-               email : '',
+               nama : '',
                password: ''
            }
        }

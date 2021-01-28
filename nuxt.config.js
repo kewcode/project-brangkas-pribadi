@@ -7,7 +7,7 @@ export default {
   mode: 'spa',
   pwa: {
     manifest: {
-      name: "Berangkas Pribadi",
+      name: "Brangkas Pribadi",
       lang: 'id'
     }
   },
@@ -21,7 +21,7 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-     title: "Berangkas Pribadi" || '',
+     title: "Brangkas Pribadi" || '',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
