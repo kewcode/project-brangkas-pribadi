@@ -42,7 +42,7 @@
       <button class="rounded-xl w-1/2 bg-danger p-1 px-5 text-sm text-white" @click="hapus(index)">hapus</button>
     </li>
   </ul>
-  <div class="w-full bg-theme_primary p-4 text-center shadow-lg rounded-xl absolute bottom-0 right-0 left-0 border" v-if="show">
+  <div class="w-full bg-theme_primary p-4 text-center shadow-lg rounded-xl fixed bottom-0 right-0 left-0 border" v-if="show">
     <h1 class="w-full text-lg font-bold">
      Detail
     </h1>
